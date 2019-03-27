@@ -1,0 +1,11 @@
+<ul>
+    <li><a class="active" href="/">Home</a></li>
+   <% if(!locals.login) { %>
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+    <% }else { %>
+      <li><a href="/users/profile">Profile</a></li>
+      <li><a href="/logout">Logout</a></li>
+    <% } %>
+  </ul>
+  
