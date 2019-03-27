@@ -118,6 +118,7 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     // associations can be defined here
     User.hasMany(models.Image)
+    User.hasMany(models.Comment)
   };
 
   User.prototype.checkLogin = function(pass){

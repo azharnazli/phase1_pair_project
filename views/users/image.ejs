@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <header><% include ../partials/navbar %></header><br>
+</head>
+<body>
+  
+    <center>
+        <form action="" method="POST">
+         <img src="<%=img.path%>" alt=""><br>
+         <label for="comment">new comment: </label><br>
+         <textarea name="text" id="" cols=40" rows="5" style="resize: none" ></textarea><br>
+         <button>new comment</button>
+         <% img.Comments.forEach( el => { %>
+          <h2><%=el.User.username%></h2>
+           <h4><%=el.text%></h4>
+         <% }) %>
+        </form>
+      </center>
+  
+</body>
+</html>

@@ -3,12 +3,14 @@ const app = express()
 const port = 3000
 const routes = require('./routes')
 const session = require('express-session')
+const addSession = require('./middlewares/session')
 
 
 app.use(session({
   secret: 'keyboard cat',
 }))
 
+app.use(addSession)
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended : true}))
 app.use(express.static(__dirname + '/public'))

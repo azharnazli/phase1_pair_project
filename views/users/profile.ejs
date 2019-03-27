@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/grid.css">
   <title>Profile</title>
 </head>
 <header><% include ../partials/navbar %></header><br>
@@ -25,7 +24,7 @@
 
     
     <% user.Images.forEach( image => { %>
-      <div class="wrapper">
+      <div class="wrapper" style="" >
         <img src="<%=image.path%>" height="200" width="225" style="margin-bottom: 10px;" alt=""><br>
       </div>
     <% }) %>

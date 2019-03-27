@@ -4,17 +4,24 @@ const login = require('./login')
 const logout = require('./logout')
 const users = require('./users')
 const upload = require('./upload')
+const image = require('./image')
 
+const { User, Image } = require('../models')
 
-
-const session = require('../middlewares/session')
-
-routes.use(session)
 
 routes.get('/', (req, res)=> {
-  res.render('home/homepage')
+  User.findAll({
+    include:[Image]
+  })
+    .then( allUser => {
+      // res.send(allUser)
+      res.render('home/homepage', { allUser })
+    })
+    .catch( err => {
+      res.send(err.message)
+    })
+  
 })
-
 
 
 routes.get('/session', (req, res)=> {
@@ -26,6 +33,7 @@ routes.use('/register', register)
 routes.use('/login', login)
 routes.use('/logout', logout)
 routes.use('/users', users)
+routes.use('/image', image)
 
 
 module.exports =  routes
