@@ -177,8 +177,7 @@ function uploadImage(id) {
     .then(function (response) {
         //handle success
         
-        window.location = `/`
-      //  window.location = '/'
+        window.location = `/tags/${id}`      //  window.location = '/'
     })
     .catch(function (response) {
         //handle error

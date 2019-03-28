@@ -8,12 +8,12 @@
 </head>
 <body>
  
-  <form action="" method="POST">
+  <form action="/tags/<%=imageTag.UserId%>" method="POST">
 
-    <img src="public/upload/1553773886641.png" alt=""><br>
+    <img src="<%=imageTag.path%>" alt=""><br>
     <%tags.forEach(el => {%>
       
-      <input type="checkbox" name="<%el.id%>" id=""><%=el.name%>
+      <input type="checkbox" name="tagId" id=""  value="<%=el.id%>" ><%=el.name%>
       <% }) %>
       <br>
       <button>submit</button>

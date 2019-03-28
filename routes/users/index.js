@@ -10,7 +10,7 @@ const {
 const fs = require('fs')
 
 routes.get('/profile/:id', (req, res) => {
-  let tags;
+  let tag;
   // if (!req.session.login || req.params.id != Number) {
   //   res.redirect('/')
   // }
