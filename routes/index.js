@@ -20,8 +20,6 @@ routes.get('/', (req, res) => {
       order: [['createdAt','DESC']]
     })
     .then(allImage => {
-      // res.send(allImage)
-      // console.log(allImage[0].User.lastname)
       res.render('home/feed', { allImage })
     })
     .catch(err => {
@@ -31,9 +29,9 @@ routes.get('/', (req, res) => {
 })
 
 
-// routes.get('/session', (req, res)=> {
-//   res.send(req.session)
-// })
+routes.get('/session', (req, res)=> {
+  res.send(req.session)
+})
 
 routes.use('/upload', upload)
 routes.use('/register', register)

@@ -11,7 +11,7 @@ const fs = require('fs')
 
 routes.get('/profile/:id', (req, res) => {
   let tags;
-  if (!req.session.login) {
+  if (!req.session.login || req.params.id != Number) {
     res.redirect('/')
   }
   Tag.findAll()
@@ -34,6 +34,9 @@ routes.get('/profile/:id', (req, res) => {
 })
 
 routes.get('/editimage', (req, res) => {
+  if (!req.session.login) {
+    res.redirect('/')
+  }
   Tag.findAll()
     .then(tags => {
       res.render('users/editphoto', {

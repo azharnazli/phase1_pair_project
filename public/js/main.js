@@ -167,7 +167,7 @@ function uploadImage(id) {
   const formData = new FormData()
   formData.append("title", "hello")
   formData.append("image", canvas.toDataURL())
-  console.log(formData)
+  console.log(formData.image)
   axios({
     method: 'post',
     url: `http://localhost:3000/users/editimage/` + id,
