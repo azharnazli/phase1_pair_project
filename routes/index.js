@@ -20,7 +20,8 @@ routes.get('/', (req, res) => {
       }, {
         model: Comment,
         include: [User]
-      }]
+      }],
+      order: [['createdAt','DESC']]
     })
     .then(allImage => {
       // res.send(allImage)
