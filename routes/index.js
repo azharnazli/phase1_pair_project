@@ -6,27 +6,37 @@ const users = require('./users')
 const upload = require('./upload')
 const image = require('./image')
 
-const { User, Image } = require('../models')
+const {
+  User,
+  Image,
+  Comment
+} = require('../models')
 
 
-routes.get('/', (req, res)=> {
-  User.findAll({
-    include:[Image]
-  })
-    .then( allUser => {
-      // res.send(allUser)
-      res.render('home/homepage', { allUser })
+routes.get('/', (req, res) => {
+  Image.findAll({
+      include: [{
+        model: User
+      }, {
+        model: Comment,
+        include: [User]
+      }]
     })
-    .catch( err => {
+    .then(allImage => {
+      // res.send(allImage)
+      // console.log(allImage[0].User.lastname)
+      res.render('home/feed', { allImage })
+    })
+    .catch(err => {
       res.send(err.message)
     })
-  
+
 })
 
 
-routes.get('/session', (req, res)=> {
-  res.send(req.session)
-})
+// routes.get('/session', (req, res)=> {
+//   res.send(req.session)
+// })
 
 routes.use('/upload', upload)
 routes.use('/register', register)
@@ -36,4 +46,4 @@ routes.use('/users', users)
 routes.use('/image', image)
 
 
-module.exports =  routes
+module.exports = routes

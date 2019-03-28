@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/azharnazli/phase1_pair_project#readme",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "bcryptjs": "^2.4.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
