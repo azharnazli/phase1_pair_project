@@ -182,7 +182,8 @@ function uploadImage(id) {
     })
     .catch(function (response) {
         //handle error
-        console.log(response);
+        // console.log(response);
+        window.location = `/`
     });
     
 }

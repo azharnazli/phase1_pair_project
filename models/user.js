@@ -103,6 +103,9 @@ module.exports = (sequelize, DataTypes) => {
           msg: `Please Input Gender`
         }
       }
+    },
+    bio:{
+      type: DataTypes.TEXT
     }
   }, {
     hooks: {

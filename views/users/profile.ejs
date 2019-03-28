@@ -1,46 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+    <% include ../partials/head %>
 
 <body>
-    <nav class="navigation">
-        <div class="navigation__column">
-            <a href="feed.html">
-                <img src="images/logo.png" />
-            </a>
-        </div>
-        <div class="navigation__column">
-            <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search">
-        </div>
-        <div class="navigation__column">
-            <ul class="navigations__links">
-                <li class="navigation__list-item">
-                    <a href="explore.html" class="navigation__link">
-                        <i class="fa fa-compass fa-lg"></i>
-                    </a>
-                </li>
-                <li class="navigation__list-item">
-                    <a href="#" class="navigation__link">
-                        <i class="fa fa-heart-o fa-lg"></i>
-                    </a>
-                </li>
-                <li class="navigation__list-item">
-                    <a href="profile.html" class="navigation__link">
-                        <i class="fa fa-user-o fa-lg"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+   
+    <% include ../partials/navbar %>
     <main id="profile">
         <header class="profile__header">
             <div class="profile__column">
@@ -48,13 +13,13 @@
             </div>
             <div class="profile__column">
                 <div class="profile__title">
-                    <h3 class="profile__username">serranoarevalo</h3>
-                    <a href="edit-profile.html">Edit profile</a>
+                    <h3 class="profile__username"><%= user.username %> </h3>
+                    <a href="/users/<%= user.id %>/edit">Edit profile</a>
                     <i class="fa fa-cog fa-lg"></i>
                 </div>
                 <ul class="profile__stats">
                     <li class="profile__stat">
-                        <span class="stat__number">333</span> posts
+                        <span class="stat__number">11</span> posts
                     </li>
                     <li class="profile__stat">
                         <span class="stat__number">1234</span> followers
@@ -66,10 +31,8 @@
                 <p class="profile__bio">
                     <span class="profile__full-name">
                         <%=`${user.firstname} ${user.lastname}`%>
-                    </span> <%=user.email%>  Pho Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Ducimus suscipit praesentium eveniet quibusdam ipsam omnis fugit. Tempore voluptates ratione recusandae
-                    natus illo perspiciatis suscipit, odio consequuntur quasi obcaecati minus! Omnis.
-                    <a href="#">serranoarevalo.com</a>
+                    </span>   <%=`${user.bio}`%>
+                    <a href="#"><%=user.email%> </a>
                 </p>
             </div>
         </header>

@@ -1,6 +1,6 @@
 <nav class="navigation">
   <div class="navigation__column">
-    <a href="feed.html">
+    <a href="/"">
       <!-- Master branch comment -->
       <img src="images/logo.png" />
     </a>
@@ -11,23 +11,28 @@
   </div>
   <div class="navigation__column">
     <ul class="navigations__links">
-      <li class="navigation__list-item">
-        <a href="/users/editimage/" class="navigation__link">
-          <i class="fa fa-compass fa-lg"></i>
-        </a>
-      </li>
       <% if(!locals.login) { %>
-      <li class="navigation__list-item">
-        <a href="/register" class="navigation__link">
-          <i class="fa fa-heart-o fa-lg"></i>
-        </a>
-      </li>
+        <li class="navigation__list-item">
+          <a href="/login" class="navigation__link">
+            <i class="fa fa-cogs fa-lg"></i>
+          </a>
+        </li>
       <li class="navigation__list-item">
         <a href="/login" class="navigation__link">
           <i class="fa fa-sign-in fa-lg"></i>
         </a>
       </li>
+      <li class="navigation__list-item">
+        <a href="/login" class="navigation__link">
+          <i class="fa fa-user-o fa-lg"></i>
+        </a>
+      </li>
       <% }else { %>
+        <li class="navigation__list-item">
+          <a href="/users/editimage/" class="navigation__link">
+            <i class="fa fa-cogs fa-lg"></i>
+          </a>
+        </li>
       <li class="navigation__list-item">
         <a href="/logout" class="navigation__link">
           <i class="fa fa-sign-out fa-lg"></i>

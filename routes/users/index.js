@@ -11,9 +11,9 @@ const fs = require('fs')
 
 routes.get('/profile/:id', (req, res) => {
   let tags;
-  if (!req.session.login || req.params.id != Number) {
-    res.redirect('/')
-  }
+  // if (!req.session.login || req.params.id != Number) {
+  //   res.redirect('/')
+  // }
   Tag.findAll()
     .then(tags => {
       tag = tags
@@ -31,6 +31,28 @@ routes.get('/profile/:id', (req, res) => {
     .catch(err => {
       res.send(err)
     })
+})
+routes.get('/:id/edit',(req,res)=>{
+ User.findByPk(req.params.id)
+ .then(user=>{
+   res.render('users/updateprofile',{
+     user   
+   })
+
+ })
+})
+
+routes.post('/:id/edit',(req,res)=>{
+  User.findByPk(req.params.id)
+  .then(user=>{
+    return user.update(req.body)
+  })
+  .then(success=>{
+    res.redirect('/users/profile/'+req.params.id)
+  })
+  .catch(err=>{
+    res.send(err)
+  })
 })
 
 routes.get('/editimage', (req, res) => {

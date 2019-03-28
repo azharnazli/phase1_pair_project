@@ -12,38 +12,29 @@
             <form Method="POST" class="edit-profile__form">
                 <div class="form__row">
                     <label for="firstname" class="form__label">First Name:</label>
-                    <input name="firstname" type="text" class="form__input" />
+                    <input name="firstname" value=" <%= user.firstname %>" type="text" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="lastname" class="form__label">Last name:</label>
-                    <input name="lastname" type="text" class="form__input" />
+                    <input name="lastname" value=" <%= user.lastname %>" type="text" class="form__input" />
                 </div>
-                <div class="form__row">
-                    <label for="username" class="form__label">username:</label>
-                    <input name="username" type="text" class="form__input" />
-                </div>
-                <div class="form__row">
-                  <label for="password" class="form__label">password:</label>
-                  <input name="password" type="password" class="form__input" />
-              </div>
                 <div class="form__row">
                     <label for="bio" class="form__label">Bio:</label>
-                    <textarea name="bio"></textarea>
+                    <textarea name="bio"> <%= user.bio %> </textarea>
                 </div>
                 <div class="form__row">
                     <label for="email" class="form__label">email:</label>
-                    <input name="email" type="email" class="form__input" />
+                    <input name="email" value=" <%= user.email %>" type="email" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="birthdate" class="form__label">birthdate:</label>
-                    <input name="birthdate" type="date" class="form__input" />
+                    <input name="birthdate" value=" <%= user.birthdate.toISOString().substr(0,10) %>" type="date" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="gender" class="form__label">Gender:</label>
-                    <select name="gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="cant">Can't remember</option>
+                    <select name="gender" disabled>
+                        <option value="Male" <% user.gender=='Male'?'selected':'' %></option>Male</option>
+                        <option value="Female" <% user.gender=='Female'?'selected':'' %></option> >Female</option>
                     </select>
                 </div>
                 <input type="submit" value="Submit">

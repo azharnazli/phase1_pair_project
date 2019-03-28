@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   Comment.prototype.getCommenter = function(){
     return sequelize.models.User.findByPk(this.UserId)
     .then(user=>{
-      console.log(user.username,'namamamamamamamamamamamama')
+
       return user.username
       
     })
