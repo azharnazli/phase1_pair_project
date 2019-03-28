@@ -23,11 +23,6 @@
                     <canvas id="canvas"></canvas>
                     <div>
                         <input type="button" value="Upload Image" onclick="uploadImage('<%=locals.login.id%>')">
-                       
-                        <% tags.forEach( el => { %>
-                           <input type="checkbox" name="<%=el.name%>" id=""> <%=el.name%> 
-                        <% }) %> 
-
                     </div>
         </form>
 

@@ -5,6 +5,7 @@ const logout = require('./logout')
 const users = require('./users')
 const upload = require('./upload')
 const image = require('./image')
+const tags = require('./tags')
 
 const { User, Image, Comment} = require('../models')
 
@@ -39,6 +40,7 @@ routes.use('/login', login)
 routes.use('/logout', logout)
 routes.use('/users', users)
 routes.use('/image', image)
+routes.use('/tags', tags)
 
 
 module.exports = routes

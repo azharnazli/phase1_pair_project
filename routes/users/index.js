@@ -59,6 +59,7 @@ routes.post("/editimage/:id", (req, res, next) => {
     encoding: "base64"
   })
 
+  console.log(req.body.title)
   Image.create({
       path: path,
       UserId: req.params.id
