@@ -9,17 +9,18 @@ const {
 routes.get('/:id', (req, res) => {
   Image.findByPk(req.params.id, {
       include: [{
-        model: Comment,
+        model: User},
+        {model: Comment,
         include: [User]
       }],
       order: [
         [Comment, 'createdAt', 'DESC']
       ]
     })
-    .then(img => {
+    .then(image => {
       // res.send(img)
       res.render('users/image', {
-        img
+        image
       })
     })
     .catch(err => {

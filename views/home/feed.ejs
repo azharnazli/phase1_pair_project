@@ -26,13 +26,13 @@
                         </span>
                 </div>
                 <span class="photo__likes">45 likes</span>
-                <% image.Comments.map(comment=>{ %>
+                <% image.Comments.map((comment,idx)=>{  if(idx<=4){ %>
                 <ul class="photo__comments">
                     <li class="photo__comment">
                         <span class="photo__comment-author"> <a href="user/<%= comment.User.id%>"><%= comment.User.username %></a></span> <%= comment.text %>
                     </li>
                 </ul>
-           <% }) %>
+           <% }}) %>
                 <span class="photo__time-ago">2 hours ago</span>
                 <div class="photo__add-comment-container">
                     <textarea name="comment" placeholder="Add a comment..."></textarea>

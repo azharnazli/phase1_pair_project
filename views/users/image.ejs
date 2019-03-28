@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <header><% include ../partials/navbar %></header><br>
-</head>
+
+    <% include ../partials/head %>
+
 <body>
-  
-    <center>
-        <form action="" method="POST">
-         <img src="<%=img.path%>" alt=""><br>
-         <label for="comment">new comment: </label><br>
-         <textarea name="text" id="" cols=40" rows="5" style="resize: none" ></textarea><br>
-         <button>new comment</button>
-         <% img.Comments.forEach( el => { %>
-          <h2><%=el.User.username%></h2>
-           <h4><%=el.text%></h4>
-         <% }) %>
-        </form>
-      </center>
-  
+    <% include ../partials/navbar %>
+    <main id="feed">
+        <div class="photo">
+            <header class="photo__header">
+                <img src="images/avatar.jpg" class="photo__avatar" />
+                <div class="photo__user-info">
+                    <span class="photo__author"> <%= image.User.username %> </span>
+                    <span class="photo__location">Bekasi</span>
+                </div>
+            </header>
+            <a href="image/<%= image.id %>"><img height=auto width= 600 src="<%= image.path %>" /></a>
+            <div class="photo__info">
+                <div class="photo__actions">
+                    <span class="photo__action">
+                            <i class="fa fa-heart-o fa-lg"></i>
+                        </span>
+                    <span class="photo__action">
+                            <i class="fa fa-comment-o fa-lg"></i>
+                        </span>
+                </div>
+                <span class="photo__likes">45 likes</span>
+                <% image.Comments.map(comment=>{ %>
+                <ul class="photo__comments">
+                    <li class="photo__comment">
+                        <span class="photo__comment-author"> <a href="user/<%= comment.User.id%>"><%= comment.User.username %></a></span> <%= comment.text %>
+                    </li>
+                </ul>
+           <% }) %>           
+                <span class="photo__time-ago">2 hours ago</span>
+                <div class="photo__add-comment-container">
+                    <form action="" method="POST">
+                    <input style="height: 40px; width:500px; border: none;" type = "text" name="text" placeholder="Add a commentaarr...">
+                   
+                  </form>
+                    <i class="fa fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </div>
+       
+    </main>
+    <% include ../partials/footer %>
 </body>
+
 </html>
