@@ -1,6 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+
+
 let img = new Image();
 let fileName = "";
 
@@ -115,7 +117,6 @@ uploadFile.addEventListener("change", () => {
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0, img.width, img.height);
         canvas.removeAttribute("data-caman-id");
-        console.log(canvas.toDataURL(), "=======================")
       };
     },
     false
@@ -163,11 +164,10 @@ function uploadImage(id) {
   console.log(id);
 
   const canvas = document.getElementById("canvas")
-  console.log(canvas.toDataURL())
   const formData = new FormData()
   formData.append("title", "hello")
   formData.append("image", canvas.toDataURL())
-  console.log(formData.image, "inin apa")
+  console.log(formData)
   axios({
     method: 'post',
     url: `http://localhost:3000/users/editimage/` + id,
@@ -176,10 +176,13 @@ function uploadImage(id) {
     })
     .then(function (response) {
         //handle success
-        console.log(response);
+        
+        window.location = `/`
+      //  window.location = '/'
     })
     .catch(function (response) {
         //handle error
         console.log(response);
     });
+    
 }

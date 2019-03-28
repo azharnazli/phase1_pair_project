@@ -6,11 +6,7 @@ const users = require('./users')
 const upload = require('./upload')
 const image = require('./image')
 
-const {
-  User,
-  Image,
-  Comment
-} = require('../models')
+const { User, Image, Comment} = require('../models')
 
 
 routes.get('/', (req, res) => {
