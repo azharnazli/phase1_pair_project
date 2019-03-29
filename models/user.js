@@ -122,6 +122,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Image)
     User.hasMany(models.Comment)
+    User.hasMany(models.profileImage)
   };
 
   User.prototype.checkLogin = function(pass){

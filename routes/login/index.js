@@ -15,6 +15,9 @@ routes.post('/', (req, res) => {
     }
   })
     .then( foundUser => {
+      if(!foundUser){
+        res.redirect('/login')
+      }
       datauser = foundUser
       return foundUser.checkLogin(req.body.password)
     })

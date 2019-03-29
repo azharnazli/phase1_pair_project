@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Image.associate = function(models) {
     // associations can be defined here
+    Image.belongsToMany(models.Tag, {through : models.TagImage})
     Image.belongsTo(models.User)
     Image.hasMany(models.Comment)
   };

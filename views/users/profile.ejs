@@ -9,7 +9,14 @@
     <main id="profile">
         <header class="profile__header">
             <div class="profile__column">
-                <img src="images/avatar.jpg" width="150px" height="150px" />
+
+                <% if(user.profileImages.length > 0){ %>
+                    <img src="<%=user.profileImages[user.profileImages.length - 1].path%>" width="150px" height="150px" />
+                <% }else  { %>
+                    <img src="public/uploads/img-1553810050318.jpeg" width="150px" height="150px" />
+               <% } %>
+
+
             </div>
             <div class="profile__column">
                 <div class="profile__title">

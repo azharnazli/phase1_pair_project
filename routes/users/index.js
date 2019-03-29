@@ -2,57 +2,56 @@ const routes = require('express').Router()
 const {
   User,
   Image,
-  Tag
+  Tag,
+  profileImage
 } = require('../../models')
 const {
-  upload
+  upload,
+  profileUpload
 } = require('../../helper/multer')
 const fs = require('fs')
+const checkLogin = require('../../middlewares/checklogin')
 
-routes.get('/profile/:id', (req, res) => {
-  let tag;
-  // if (!req.session.login || req.params.id != Number) {
-  //   res.redirect('/')
-  // }
-  Tag.findAll()
-    .then(tags => {
-      tag = tags
-    })
+
+routes.get('/profile/:id', checkLogin, (req, res) => {
   User.findByPk(req.session.login.id, {
-      include: [Image]
+      include: [{
+        model: profileImage
+      }, {
+        model: Image
+      }]
     })
     .then(user => {
-      // res.send(tag)
+      // res.send(user)
       res.render('users/profile', {
-        user,
-        tag
+        user
       })
+    })
+    .catch(err => {
+      res.send(err.message)
+    })
+})
+routes.get('/:id/edit', (req, res) => {
+  User.findByPk(req.params.id)
+    .then(user => {
+      res.render('users/updateprofile', {
+        user
+      })
+
+    })
+})
+
+routes.post('/:id/edit', (req, res) => {
+  User.findByPk(req.params.id)
+    .then(user => {
+      return user.update(req.body)
+    })
+    .then(success => {
+      res.redirect('/users/profile/' + req.params.id)
     })
     .catch(err => {
       res.send(err)
     })
-})
-routes.get('/:id/edit',(req,res)=>{
- User.findByPk(req.params.id)
- .then(user=>{
-   res.render('users/updateprofile',{
-     user   
-   })
-
- })
-})
-
-routes.post('/:id/edit',(req,res)=>{
-  User.findByPk(req.params.id)
-  .then(user=>{
-    return user.update(req.body)
-  })
-  .then(success=>{
-    res.redirect('/users/profile/'+req.params.id)
-  })
-  .catch(err=>{
-    res.send(err)
-  })
 })
 
 routes.get('/editimage', (req, res) => {
@@ -93,8 +92,6 @@ routes.post("/editimage/:id", (req, res, next) => {
       res.send(err)
     })
 })
-
-
 
 
 module.exports = routes

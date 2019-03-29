@@ -7,20 +7,27 @@ const upload = require('./upload')
 const image = require('./image')
 const tags = require('./tags')
 
-const { User, Image, Comment} = require('../models')
+const { User, Image, Comment, profileImage, Tag} = require('../models')
 
 
 routes.get('/', (req, res) => {
+  // if(!res.locals.login) {
+  //   res.locals.login = 0
+  // }
   Image.findAll({
       include: [{
-        model: User
+        model: User,
+        include:[profileImage]
       }, {
         model: Comment,
         include: [User]
+      },{
+        model: Tag
       }],
       order: [['createdAt','DESC']]
     })
     .then(allImage => {
+      // res.send(allImage)
       res.render('home/feed', { allImage })
     })
     .catch(err => {

@@ -19,6 +19,7 @@ app.use("*/css",express.static("public/css"));
 app.use('*/js',express.static("public/js"));
 app.use("*/images",express.static("public/images"))
 app.use("*/upload",express.static("public/upload"))
+app.use("*/uploads",express.static("public/uploads"))
 
 
 app.use('/', routes)

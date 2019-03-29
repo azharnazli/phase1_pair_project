@@ -2,23 +2,29 @@ const routes = require('express').Router()
 const {
   Image,
   Comment,
-  User
+  User,
+  profileImage
 } = require('../../models')
+
+const checklogin = require('../../middlewares/checklogin')
 
 
 routes.get('/:id', (req, res) => {
   Image.findByPk(req.params.id, {
       include: [{
-        model: User},
-        {model: Comment,
-        include: [User]
+        model: User,
+        include: [{
+          model: profileImage
+        }]
+      }, {
+        model: Comment,
       }],
       order: [
-        [Comment, 'createdAt', 'DESC']
+        [Comment, 'createdAt', 'DESC'],
       ]
     })
     .then(image => {
-      // res.send(img)
+      // res.send(image)
       res.render('users/image', {
         image
       })
@@ -28,7 +34,7 @@ routes.get('/:id', (req, res) => {
     })
 })
 
-routes.post('/:id', (req, res) => {
+routes.post('/:id', checklogin, (req, res) => {
   Comment.create({
       text: req.body.text,
       ImageId: req.params.id,

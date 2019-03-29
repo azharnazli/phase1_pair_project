@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<% include ../partials/head %>
 
- <% include ../partials/head %>
 
 <body>
-  <% include ../partials/navbar %>
+    <% include ../partials/navbar %>
     <main id="edit-profile">
         <div class="edit-profile__container">
             <header class="edit-profile__header">
             </header>
+
+
+            <div class="form__row" class="edit-profile__form">
+            <form method="POST" action="/upload/<%=locals.login.id%>" id="img"  enctype="multipart/form-data">
+                <input type="file" name="img" onchange="readURL(this);" />
+                <br>
+                <img id="img" src="#" alt="" style="width: 150px; height:150px" />
+                <button>upload</button>
+            </form>
+            </div>
+
             <form Method="POST" class="edit-profile__form">
                 <div class="form__row">
                     <label for="firstname" class="form__label">First Name:</label>
@@ -20,7 +33,7 @@
                 </div>
                 <div class="form__row">
                     <label for="bio" class="form__label">Bio:</label>
-                    <textarea name="bio"style="resize:none" ><%= user.bio %></textarea>
+                    <textarea name="bio" style="resize:none"><%= user.bio %></textarea>
                 </div>
                 <div class="form__row">
                     <label for="email" class="form__label">email:</label>
@@ -28,21 +41,37 @@
                 </div>
                 <div class="form__row">
                     <label for="birthdate" class="form__label">birthdate:</label>
-                    <input name="birthdate" value="<%=user.birthdate.toISOString().slice(0,10)%>" type="date"  />
+                    <input name="birthdate" value="<%=user.birthdate.toISOString().slice(0,10)%>" style="resize: none"
+                        type="date" class="form__input" />
                 </div>
                 <div class="form__row">
                     <label for="gender" class="form__label">Gender:</label>
                     <select name="gender" disabled>
-                        <option value="Male" <% user.gender=='Male'?'selected':'' %></option>Male</option>
-                        <option value="Female" <% user.gender=='Female'?'selected':'' %></option> >Female</option>
-                    </select>
-                </div>
-                <input type="submit" value="Submit">
+                        <option value="Male" <% user.gender=='Male'?'selected':'' %></option>Male </option> <option
+                            value="Female" <% user.gender=='Female'?'selected':'' %></option>>Female </option> </select>
+                            </div> <input type="submit" value="Submit">
             </form>
         </div>
     </main>
     <% include ../partials/footer %>
-   
+
 </body>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+</script>
 
 </html>

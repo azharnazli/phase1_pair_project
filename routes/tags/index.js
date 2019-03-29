@@ -6,9 +6,11 @@ const {
   TagImage
 } = require('../../models')
 
+const checkLogin = require('../../middlewares/checklogin')
 
 
-routes.get('/:id', (req, res) => {
+
+routes.get('/:id',checkLogin, (req, res) => {
   let imageTag;
   Image.findAll({
       where: {
@@ -34,8 +36,8 @@ routes.get('/:id', (req, res) => {
     })
 })
 
-routes.post('/:id', (req, res) => {
-  let image;
+routes.post('/:id',checkLogin, (req, res) => {
+  let gambar;
   User.findByPk(req.params.id, {
       include: [Image],
       order: [
@@ -43,22 +45,22 @@ routes.post('/:id', (req, res) => {
       ],
     })
     .then(user => {
-      if(!req.body.id){
+      [gambar] = user.Images
+      if (!req.body.tagId) {
         res.redirect('/')
       }
-      if (req.body.tagId > 1) {
-        [image] = user.Images
+      if (req.body.tagId.length > 1) {
         let data = req.body.tagId.reduce((acc, el) => {
           acc.push({
-            ImageId: image.id,
+            ImageId: gambar.id,
             TagId: el,
           })
           return acc
         }, [])
         return TagImage.bulkCreate(data)
       } else {
-      return TagImage.create({
-          ImageId: image.id,
+        return TagImage.create({
+          ImageId: gambar.id,
           TagId: req.body.tagId
         })
       }

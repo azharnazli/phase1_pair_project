@@ -5,10 +5,10 @@
       <img src="images/logo.png" />
     </a>
   </div>
-  <div class="navigation__column">
+  <!-- <div class="navigation__column">
     <i class="fa fa-search"></i>
     <input type="text" placeholder="Search">
-  </div>
+  </div> -->
   <div class="navigation__column">
     <ul class="navigations__links">
       <% if(!locals.login) { %>
@@ -18,12 +18,12 @@
           </a>
         </li>
       <li class="navigation__list-item">
-        <a href="/login" class="navigation__link">
+        <a href="/register" class="navigation__link">
           <i class="fa fa-sign-in fa-lg"></i>
         </a>
       </li>
       <li class="navigation__list-item">
-        <a href="/login" class="navigation__link">
+        <a href="/users/profile/0" class="navigation__link">
           <i class="fa fa-user-o fa-lg"></i>
         </a>
       </li>
