@@ -30,14 +30,6 @@
   animation: rotateLynn 1s linear infinite;
 } */
 
-@keyframes rotateLynn {
-  from {
-    transform: rotateY(0turn);
-  }
-  to {
-    transform: rotateY(1turn);
-  }
-}
 
 .profile__column .profile__title,
 .profile__column .profile__stats {
