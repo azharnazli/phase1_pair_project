@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<<<<<<< HEAD
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Feed InstaG</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="css/styles.css">
+ <style>
+   form {
+     text-align: center;
+     margin-top: 50px;
+   }
+
+   input {
+     width: 100px;
+     height: 30px;
+     position: absolute;
+     top: 10;
+     left: 0;
+     opacity: 0;
+
+   }
+
+   .custom_input {
+     background: #ddd;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     width: auto;
+     height: auto;
+     display: inline-block;
+     margin: 5px;
+     position: relative;
+     font-size: 20px;
+     color: #bbb;
+   }
+
+   input:checked+span {
+
+     color: #000;
+   }
+   .btn-add-tags {
+     color: #ecf0f1;
+     font-size: 20px;
+     border: none;
+     background:#3498db;
+     padding: 5px 50px 5px 50px;
+
+   }
+ </style>
+</head>
+
+<body>
+ <% include ../partials/navbar %>
+ <main id="edit-profile">
+   <div class="edit-profile__container">
+     <header class="edit-profile__header">
+     </header>
+     <form action="/tags/<%=imageTag.UserId%>" method="POST">
+       <img style="width:80%;" src="<%=imageTag.path%>" alt=""><br>
+       <%tags.forEach(el => {%>
+       <div class="custom_input"><input type="checkbox" name="tagId"" value=" <%=el.id%>" /><span>#<%=el.name%></span>
+       </div>
+       <% }) %>
+
+       <button type="submit" class="btn-add-tags">Add Tags</button>
+     </form>
+   </div>
+ </main>
+ <% include ../partials/footer %>
+=======
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Feed InstaG</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    form {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      width: 100px;
+      height: 30px;
+      position: absolute;
+      top: 10;
+      left: 0;
+      opacity: 0;
+
+    }
+
+    .custom_input {
+      background: #ddd;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: auto;
+      height: auto;
+      display: inline-block;
+      margin: 5px;
+      position: relative;
+      font-size: 20px;
+      color: #bbb;
+    }
+
+    input:checked+span {
+
+      color: #000;
+    }
+    .btn-add-tags {
+      color: #ecf0f1;
+      font-size: 20px;
+      border: none;
+      background:#3498db;
+      padding: 5px 50px 5px 50px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <% include ../partials/navbar %>
+  <main id="edit-profile">
+    <div class="edit-profile__container">
+      <header class="edit-profile__header">
+      </header>
+      <form action="/tags/<%=imageTag.UserId%>" method="POST">
+        <img style="width:80%;" src="<%=imageTag.path%>" alt=""><br>
+        <%tags.forEach(el => {%>
+        <div class="custom_input"><input type="checkbox" name="tagId"" value=" <%=el.id%>" /><span>#<%=el.name%></span>
+        </div>
+        <% }) %>
+
+        <button type="submit" class="btn-add-tags">Add Tags</button>
+      </form>
+    </div>
+  </main>
+  <% include ../partials/footer %>
+>>>>>>> 914c60739bce806526a9c245d7eb8115b9a304a9
+
+</body>
+
+</html>

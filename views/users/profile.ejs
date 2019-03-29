@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <% include ../partials/head %>
+
+<body>
+   
+    <% include ../partials/navbar %>
+    <main id="profile">
+        <header class="profile__header">
+            <div class="profile__column">
+
+                <% if(user.profileImages.length > 0){ %>
+                    <img src="<%=user.profileImages[user.profileImages.length - 1].path%>" width="150px" height="150px" />
+                <% }else  { %>
+                    <img src="public/uploads/img-1553810050318.jpeg" width="150px" height="150px" />
+               <% } %>
+
+
+            </div>
+            <div class="profile__column">
+                <div class="profile__title">
+                    <h3 class="profile__username"><%= user.username %> </h3>
+                    <a href="/users/<%= user.id %>/edit">Edit profile</a>
+                    <i class="fa fa-cog fa-lg"></i>
+                </div>
+                <ul class="profile__stats">
+                    <li class="profile__stat">
+                        <span class="stat__number">11</span> posts
+                    </li>
+                    <li class="profile__stat">
+                        <span class="stat__number">1234</span> followers
+                    </li>
+                    <li class="profile__stat">
+                        <span class="stat__number">36</span> following
+                    </li>
+                </ul>
+                <p class="profile__bio">
+                    <span class="profile__full-name">
+                        <%=`${user.firstname} ${user.lastname}`%>
+                    </span>   <%=`${user.bio}`%>
+                    <a href="#"><%=user.email%> </a>
+                </p>
+            </div>
+        </header>
+        <section class="profile__photos">
+                <% user.Images.forEach( image => { %>
+            <div class="profile__photo">
+                <img src="<%=image.path%>" />
+                <div class="profile__photo-overlay">
+                    <span class="overlay__item">
+                        <i class="fa fa-heart"></i>
+                        486
+                    </span>
+                    <span class="overlay__item">
+                        <i class="fa fa-comment"></i>
+                        344
+                    </span>
+                </div>
+            </div>
+            <% }) %>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__column">
+            <nav class="footer__nav">
+                <ul class="footer__list">
+                    <li class="footer__list-item"><a href="#" class="footer__link">About Us</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Support</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Blog</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Press</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Api</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Jobs</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Privacy</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Terms</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Directory</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Language</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer__column">
+            <span class="footer__copyright">© 2017 Vietgram</span>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<nav class="navigation">
+  <div class="navigation__column">
+    <a href="/"">
+      <!-- Master branch comment -->
+      <img src="images/logo.png" />
+    </a>
+  </div>
+  <!-- <div class="navigation__column">
+    <i class="fa fa-search"></i>
+    <input type="text" placeholder="Search">
+  </div> -->
+  <div class="navigation__column">
+    <ul class="navigations__links">
+      <% if(!locals.login) { %>
+        <li class="navigation__list-item">
+          <a href="/login" class="navigation__link">
+            <i class="fa fa-cogs fa-lg"></i>
+          </a>
+        </li>
+      <li class="navigation__list-item">
+        <a href="/register" class="navigation__link">
+          <i class="fa fa-sign-in fa-lg"></i>
+        </a>
+      </li>
+      <li class="navigation__list-item">
+        <a href="/users/profile/0" class="navigation__link">
+          <i class="fa fa-user-o fa-lg"></i>
+        </a>
+      </li>
+      <% }else { %>
+        <li class="navigation__list-item">
+          <a href="/users/editimage/" class="navigation__link">
+            <i class="fa fa-cogs fa-lg"></i>
+          </a>
+        </li>
+      <li class="navigation__list-item">
+        <a href="/logout" class="navigation__link">
+          <i class="fa fa-sign-out fa-lg"></i>
+        </a>
+      </li>
+      <li class="navigation__list-item">
+        <a href="/users/profile/<%=locals.login.id%>" class="navigation__link">
+          <i class="fa fa-user-o fa-lg"></i>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

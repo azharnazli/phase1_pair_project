@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <% include ../partials/head %>
+
+<body>
+    <% include ../partials/navbar %>
+    <main id="feed">
+        <div class="photo">
+            <header class="photo__header">
+               <%  if(image.User.profileImages.length > 0) { %>
+
+                    <img src=" <%=image.User.profileImages[image.User.profileImages.length - 1].path%>" class="photo__avatar" />
+                <%  } %>
+
+                <div class="photo__user-info">
+                    <span class="photo__author"> <%= image.User.username %> </span>
+                    <span class="photo__location">Bekasi</span>
+                </div>
+            </header>
+            <a href="#"><img height=auto width= 600 src="<%= image.path %>" /></a>
+            <div class="photo__info">
+                
+                <% image.Comments.map(comment=>{ %>
+                <ul class="photo__comments">
+                    <li class="photo__comment">
+                        <span class="photo__comment-author"> <a href="user/<%= comment.User.id%>"><%= comment.User.username %></a></span> <%= comment.text %>
+                    </li>
+                </ul>
+           <% }) %>           
+                <!-- <span class="photo__time-ago">2 hours ago</span> -->
+                <div class="photo__add-comment-container">
+                    <form action="" method="POST">
+                    <input style="height: 40px; width:500px; border: none;" type = "text" name="text" placeholder="Add a commentaarr...">
+                   
+                  </form>
+                    <i class="fa fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </div>
+       
+    </main>
+    <% include ../partials/footer %>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+<body>
+    <% include ../partials/navbar %>
+    <main id="edit-profile">
+        <div class="edit-profile__container">
+            <header class="edit-profile__header">
+            </header>
+
+            <div class="edit-profile__form" > <% if(error) { %>
+                <% error.split(',').forEach( el => { %>
+                <div role="alert" class="form__row">
+                   <span style="color: red" ><%=el%> </span> 
+                </div>
+                <% }) %>
+                <% } %>
+            </div>
+
+            <form Method="POST" class="edit-profile__form">
+                <div class="form__row">
+                    <label for="firstname" class="form__label">First Name:</label>
+                    <input name="firstname" type="text" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="lastname" class="form__label">Last name:</label>
+                    <input name="lastname" type="text" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="username" class="form__label">username:</label>
+                    <input name="username" type="text" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="password" class="form__label">password:</label>
+                    <input name="password" type="password" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="bio" class="form__label">Bio:</label>
+                    <textarea name="bio"></textarea>
+                </div>
+                <div class="form__row">
+                    <label for="email" class="form__label">email:</label>
+                    <input name="email" type="email" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="birthdate" class="form__label">birthdate:</label>
+                    <input name="birthdate" type="date" class="form__input" />
+                </div>
+                <div class="form__row">
+                    <label for="gender" class="form__label">Gender:</label>
+                    <select name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="cant">Can't remember</option>
+                    </select>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
+    <% include ../partials/footer %>
+
+</body>
+
+</html>
