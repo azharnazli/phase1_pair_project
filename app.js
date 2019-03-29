@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.port || 3000
 const routes = require('./routes')
 const session = require('express-session')
 const addSession = require('./middlewares/session')
